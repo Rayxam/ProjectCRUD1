@@ -1,7 +1,7 @@
 package ru.testproject.spring.models;
 
 public class Book {
-    private int id;
+    private int book_id;
 
     private int person_id;
     private String name;
@@ -9,19 +9,21 @@ public class Book {
     private int year;
 
     public Book(int id, int personId, String name, String author, int year) {
-        this.id = id;
+        this.book_id = id;
         person_id = personId;
         this.name = name;
         this.author = author;
         this.year = year;
     }
 
+    public Book() {}
+
     public int getId() {
-        return id;
+        return book_id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.book_id = id;
     }
 
     public String getName() {
