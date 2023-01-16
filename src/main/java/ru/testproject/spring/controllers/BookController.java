@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.testproject.spring.dao.BookDAO;
 import ru.testproject.spring.dao.PersonDAO;
 import ru.testproject.spring.models.Book;
+import ru.testproject.spring.models.Person;
 
 @Controller
 @RequestMapping("/books")
@@ -29,12 +30,18 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public String show(@PathVariable("id") int id, @PathVariable("person_id") int person_id, Model model) {
-        model.addAttribute("book", bookDAO.show(id));
-        if (personDAO.show(person_id) != null)
-            model.addAttribute("person", personDAO.show(person_id));
+    public String show(@PathVariable("id") int id, Model model) {
+        Book book = bookDAO.show(id);
+        int bookOwnerId = book.getPerson_id();
+        Person bookOwner = personDAO.show(bookOwnerId);
+
+        if (bookOwner != null)
+            model.addAttribute("bookOwner", bookOwner);
         else
-            model.addAttribute("person", null);
+            model.addAttribute("bookOwner", null);
+
+        model.addAttribute("book", book);
+
         return "books/show";
     }
 

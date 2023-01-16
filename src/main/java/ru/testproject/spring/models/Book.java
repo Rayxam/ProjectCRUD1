@@ -18,12 +18,20 @@ public class Book {
 
     public Book() {}
 
-    public int getId() {
+    public int getBook_id() {
         return book_id;
     }
 
-    public void setId(int id) {
-        this.book_id = id;
+    public void setBook_id(int book_id) {
+        this.book_id = book_id;
+    }
+
+    public int getPerson_id() {
+        return person_id;
+    }
+
+    public void setPerson_id(int person_id) {
+        this.person_id = person_id;
     }
 
     public String getName() {
@@ -48,13 +56,5 @@ public class Book {
 
     public void setYear(int year) {
         this.year = year;
-    }
-
-    public int getPerson_id() {
-        return person_id;
-    }
-
-    public void setPerson_id(int person_id) {
-        this.person_id = person_id;
     }
 }

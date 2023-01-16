@@ -10,6 +10,19 @@
 <p th:text="${person.getEmail()}">VALUE</p>
 <p th:text="${person.getAddress()}">VALUE</p>
 
+<br/>
+<hr/>
+
+<td>
+<span th:if="${!books.isEmpty()}">
+<div th:each="book : ${books}">
+    <a th:text="${book.getBook_id() + ',' + book.getPerson_id() + ',' + book.getName() + ',' +
+    book.getAuthor() + ',' + book.getYear()}">current_book</a>
+</div>
+</span>
+<!--    <span th:unless="${!books.isEmpty()}" th:text="Its work">Its work</span>-->
+</td>
+
 <a th:href="@{/people/{id}/edit(id=${person.getId()})}">Edit</a>
 
 <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">

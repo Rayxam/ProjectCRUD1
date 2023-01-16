@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Все люди</title>
+    <title>Все книги</title>
 </head>
 <body>
 
 <div th:each="book : ${books}">
-    <a th:href="@{/books/{id}(id=${book.getId()})}"
-       th:text="${book.getId() + ', ' + book.getPerson_id() + ', ' + book.getName() + ', ' + book.getYear() + ', ' + book.getAuthor()}">user</a>
+    <a th:href="@{/books/{id}(id=${book.getBook_id()})}"
+       th:text="${book.getBook_id() + ', ' + book.getPerson_id() + ', ' + book.getName() + ', ' + book.getYear() + ', ' + book.getAuthor()}">user</a>
 </div>
 
 <br/>

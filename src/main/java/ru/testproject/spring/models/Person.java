@@ -2,6 +2,8 @@ package ru.testproject.spring.models;
 
 import jakarta.validation.constraints.*;
 
+import java.util.List;
+
 public class Person {
     private int id;
 
