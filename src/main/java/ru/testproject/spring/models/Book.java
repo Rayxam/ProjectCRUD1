@@ -10,7 +10,7 @@ public class Book {
 
     public Book(int id, int personId, String name, String author, int year) {
         this.book_id = id;
-        person_id = personId;
+        this.person_id = personId;
         this.name = name;
         this.author = author;
         this.year = year;
