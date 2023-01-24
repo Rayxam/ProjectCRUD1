@@ -9,10 +9,15 @@
 <br/>
 <hr/>
 
-<div>
-    <p th:if="${bookOwner != null}" th:text="'This book reserv to' + ${bookOwner.getName()}"></p>
-    <p th:unless="${bookOwner != null}" th:text="'This book not reserv.'"></p>
+<div th:if="${bookOwner != null}">
+    <p th:text="'This book reserv to' + ${bookOwner.getName()}">TEXT</p>
+
+    <form th:method="PATCH" th:action="@{/books/{id}/edit(id=${book.getBook_id()})}">
+        <input type="submit" value="Release the book"/>
+    </form>
 </div>
+
+<p th:unless="${bookOwner != null}" th:text="'This book not reserv.'">TEXT</p>
 
 <br/>
 <hr/>

@@ -80,6 +80,12 @@ public class BookController {
         return "redirect:/books";
     }
 
+    @PatchMapping("/releasebook/{id}")
+    public String releaseBook(@PathVariable("bookId") int bookId) {
+        bookDAO.releaseBook(bookId);
+        return "redirect:/books";
+    }
+
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") int id) {
         bookDAO.delete(id);

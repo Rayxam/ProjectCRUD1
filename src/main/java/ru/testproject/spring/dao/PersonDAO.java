@@ -52,7 +52,12 @@ public class PersonDAO {
     }
 
     public List<Book> getBookList(int person_id) {
-        return jdbcTemplate.query("SELECT * FROM Book WHERE person_id=?", new Object[]{person_id},
+        List<Book> bookList = jdbcTemplate.query("SELECT * FROM Book WHERE person_id=?", new Object[]{person_id},
                 new BeanPropertyRowMapper<>(Book.class));
+
+        if (bookList.isEmpty())
+            return null;
+        else
+            return bookList;
     }
 }
