@@ -1,5 +1,8 @@
 package ru.testproject.spring.models;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Book {
     private int book_id;
 

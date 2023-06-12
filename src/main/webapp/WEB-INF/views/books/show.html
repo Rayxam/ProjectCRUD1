@@ -10,14 +10,25 @@
 <hr/>
 
 <div th:if="${bookOwner != null}">
-    <p th:text="'This book reserv to' + ${bookOwner.getName()}">TEXT</p>
+    <p th:text="'This book reserv to ' + ${bookOwner.getName()}">TEXT</p>
 
-    <form th:method="PATCH" th:action="@{/books/{id}/edit(id=${book.getBook_id()})}">
+    <form th:method="PATCH" th:action="@{/books/releaseBook/{bookId}(bookId=${book.getBook_id()})}">
         <input type="submit" value="Release the book"/>
     </form>
 </div>
 
-<p th:unless="${bookOwner != null}" th:text="'This book not reserv.'">TEXT</p>
+<div th:unless="${bookOwner != null}">
+    <p th:text="'This book not reserv.'">TEXT</p>
+    <br/>
+    <form th:method="PATCH" th:action="@{/books/reservBook/{bookId}/{personId}(bookId=${book.getBook_id()})}">
+        <label for="person">Select person:</label>
+        <select th:object="${person}" th:field="*{id}" id="person">
+            <option th:each="person : ${people}" th:value="${person.getId()}" th:text="${person.getName()}"></option>
+        </select>
+
+        <input th:type="submit" value="Reserv book"/>
+    </form>
+</div>
 
 <br/>
 <hr/>
